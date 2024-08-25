@@ -1,38 +1,48 @@
+// (Conversions between feet and meters) Write a class that contains the following
+// two methods: 
 
-public class Exercise_6_9   {
+// /** Convert from feet to meters */
+// public static double footToMeter(double foot)
 
-    public static void main(String[] args)   {
+// /** Convert from meters to feet */
+// public static double meterToFoot(double meter)
 
-        displayTable();
-    }
+// The formula for the conversion is:
+// meter = 0.305 * foot
+// foot = 3.279 * meter
 
-    /*Show the table on the console.*/
-    public static void displayTable()   {
+// Write a test program that invokes these methods to display the following tables:// 
+//     Feet     Meters     |    Meters    Feet
+//     -------------------------------------------
+//     1.0      0.305      |    20.0      65.574
+//     2.0      0.610      |    25.0      81.967
+//     ...       
+//     9.0      2.745      |    60.0      196.721
+//     10.0     3.050      |    65.0      213.115
 
-        double fromMeter = 20;
-        double fromFoot = 1.0;
+public class Exercise_06_09 {
+	/** Main Method */
+	public static void main(String[] args) {
+		// Display table
+		System.out.println(
+			"\nFeet     Meters     |     Meters     Feet\n" +
+			"----------------------------------------------");
+		for (double feet = 1.0, meters = 20.0; feet <= 10.0; feet++, meters += 5) {
+			System.out.printf("%4.1f     ", feet);
+			System.out.printf("%6.3f", footToMeter(feet));
+			System.out.print("     |     ");
+			System.out.printf("%-11.1f", meters);
+			System.out.printf("%7.3f\n", meterToFoot(meters));
+		}
+	}
+	
+	/** Convert from feet to meters */
+	public static double footToMeter(double foot) {
+		return 0.305 * foot;
+	}
 
-        System.out.println("Feet\t\tMeters\t\t|\tMeters\t\tFeet");
-        System.out.println("------------------------------------------------------");
-
-        for(int count = 1; count<=10;count++)  {
-            System.out.printf("%4.1f\t\t%5.3f\t\t|\t%4.1f\t\t%7.3f\n", 
-            fromFoot, fooToMeter(fromFoot), fromMeter,
-            meterToFoot(fromMeter));
-            fromFoot++;
-            fromMeter += 5.0;
-        }
-    }
-/** Convert from feet to meters */
-public static double footToMeter(double foot)  {
-    return  0.305 * foot;
-
-}
-
-/** Convert from meters to feet */
-public static double meterToFoot(double meter)  {
-    return  3.279 * meter;
-}
-
-
+	/** Convert from meters to feet */
+	public static double meterToFoot(double meter) {
+		return 3.279 * meter;
+	}
 }
